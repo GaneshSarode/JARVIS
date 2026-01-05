@@ -6,26 +6,18 @@ import random
 import musicLibrary
 import games
 import os
-
 import google.generativeai as genai
-
-
 # -------------------- GEMINI CONFIG --------------------
 
 API_KEY = os.getenv("GEMINI_API_KEY")
 if not API_KEY:
     raise RuntimeError("GEMINI_API_KEY environment variable is not set")
-
 genai.configure(api_key=API_KEY)
-
 model = genai.GenerativeModel("gemini-2.5-flash")
-
 
 # -------------------- SPEECH SETUP --------------------
 
 recognizer = sr.Recognizer()
-
-
 def speak(text):
     try:
         engine = pyttsx3.init()
@@ -36,7 +28,6 @@ def speak(text):
         engine.stop()
     except Exception as e:
         print(f"TTS Error: {e}")
-
 
 # -------------------- AI RESPONSE --------------------
 
@@ -101,7 +92,6 @@ def processCommand(command):
 
     else:
         speak("I did not recognize that command")
-
 
 # -------------------- MAIN LOOP --------------------
 
